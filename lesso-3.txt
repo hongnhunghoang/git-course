@@ -1,0 +1,63 @@
+1. Giải thích các câu lệnh:
+- git commit --amend: sửa commit gần nhất
+- git commit --amend -m ”<message>”: sửa commit message của commit gần nhất = 1 commit message mới
+- git restore --staged <file>: đưa file từ vùng staging về lại vùng working directory
+- git reset HEAD~1: xoá commit gần nhất, đưa file từ vùng repo về lại vùng working directory
+2.
+a. working directory: file1, file2, file3
+b. working directory: file1, file2, file3
+c. 
+    - commit message: "init project"
+    - vùng repo: không có file nào
+d. 
+    - working directory: file2, file3
+    - staging area: file1
+e. 
+    - commit chứa file1 và có message là "add file"
+    - vùng repo: file1
+f. 
+    - working directory: trống
+    - staging area: file2, file3
+    - vùng repo: file1 (đã được commit trước đó)
+g. 
+    - working directory: file2
+    - staging area: file3
+    - vùng repo: file1 (đã được commit trước đó)
+h. 
+    - commit message: "add all files"
+    - vùng repo: file3, file1 (đã được commit trước đó)
+    - vùng staging: trống
+    - vùng working directory: file2
+i. 
+    - commit có message "add all files" bị xoá
+    - vùng repo: file1 
+    - vùng staging: trống
+    - vùng working directory: file2, file3
+
+=> Kết quả cuối cùng: 
+    - Commit history: "init project" (không chứa file nào), "add file" (chứa file1)
+    - vùng repo: file1 
+    - vùng staging: trống
+    - vùng working directory: file2, file3
+
+3. 
+b. working directory: file1.txt, file2.txt, oops/file3.txt
+c. 
+    - working directory: file2.txt, .gitignore
+    - bị ignore: file1.txt, oops/file3.txt
+d. 
+    - working directory: trống
+    - bị ignore (không được add): file1.txt, oops/file3.txt
+    - staging area: file2.txt, .gitignore
+e. 
+    - working directory: trống
+    - bị ignore: file1.txt, oops/file3.txt
+    - staging area: trống
+    - vùng repo: file2.txt, .gitignore
+
+=> Kết quả cuối cùng: 
+    - working directory: trống
+    - bị ignore: file1.txt, oops/file3.txt
+    - staging area: trống
+    - vùng repo: file2.txt, .gitignore
+
